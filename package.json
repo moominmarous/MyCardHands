@@ -1,0 +1,24 @@
+{
+  "name": "mycardhands",
+  "version": "1.0.0",
+  "description": "Draw and move a card around a board.",
+  "main": "card.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moominmarous/MyCardHands.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moominmarous/MyCardHands/issues"
+  },
+  "homepage": "https://github.com/moominmarous/MyCardHands#readme",
+  "dependencies": {
+    "ws": "^8.18.1"
+  }
+}

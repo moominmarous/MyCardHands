@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARDS</title>
+    <style>
+        html {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        body {
+            user-select: none;
+            background-image:
+                repeating-linear-gradient(0deg, #ccc, #ccc 1px, transparent 1px, transparent 100px),
+                repeating-linear-gradient(90deg, #ccc, #ccc 1px, transparent 1px, transparent 100px);
+            background-size: 100px 100px;
+            height: calc(100% - 38px);
+        }
+
+        #map-space {
+            /* width: 80%; */
+            /* position: absolute; */
+            /* top: 50px; */
+            width: 80%;
+            height: 500px;
+            /* height: 80vh; */
+            margin: 20px auto;
+            background-color: #96d5f1;
+            /* border: 2px solid #ccc; */
+            display: grid;
+            z-index: 1;
+        }
+
+        #options {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            height: max-content;
+            width: max-content;
+            /* width: 100px; */
+            padding: 10px;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background-color: #ddd;
+            z-index: 3;
+        }
+
+        #stats {
+            background-color: #ddd;
+            position: absolute;
+            top: 60px;
+            left: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            height: max-content;
+            width: max-content;
+            /* width: 100px; */
+            padding: 10px;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .card {
+            position: absolute;
+            top: 300px;
+            left: 100px;
+            width: 100px;
+            height: 150px;
+            box-sizing: border-box;
+            border: 1.5px solid black;
+            background-color: #F2EFE6;
+            border-radius: 2.5px;
+            z-index: 2;
+        }
+
+        .cell-unit {
+            box-sizing: border-box;
+            border: none;
+            user-select: none;
+            color: inherit;
+        }
+
+        .cell-unit:hover {
+            opacity: 50%;
+            border: 1px solid greenyellow;
+            transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+            box-sizing: border-box;
+        }
+
+        .color-block {
+            width: fit-content;
+            height: fit-content;
+            background-color: #ddd;
+        }
+
+        .statText {
+            width: 50px;
+        }
+
+        #point {
+            position: absolute;
+            top: -2.5px;
+            left: -2.5px;
+            z-index: 4;
+            width: 5px;
+            height: 5px;
+            background-color: red;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to MyCards Playing Field!</h1>
+    <!-- <div id="options">
+        <div style="display: flexbox">
+            <button onclick="zoom(-1)">Zoom out</button>
+            <button onclick="zoom(0)">Reset</button>
+            <button onclick="zoom(1)">Zoom in</button>
+        </div>
+        <div>
+            <div>Zoom Scale: <input id="zoomScale" disabled class="statText" value="1.0"></input></div>
+            <div>Red X: <input id="origX" disabled class="statText" value="0"></input></div>
+            <div>Red Y: <input id="origY" disabled class="statText" value="0"></input></div>
+            <div>Offset X: <input id="offsetX" disabled class="statText" value="0"></input></div>
+            <div>Offset Y: <input id="offsetY" disabled class="statText" value="0"></input></div>
+            <div>Distance X: <input id="distanceX" disabled class="statText" value="0"></input></div>
+            <div>Distance Y: <input id="distanceY" disabled class="statText" value="0"></input></div>
+
+        </div>
+        <div>
+            <label for="cell-input">Cell size:</label>
+            <input id="cell-input" type="number" min="1" max="10" step="1" value="3">
+        </div>
+        <div>
+            <label for="width-input">Select width:</label>
+            <input id="width-input" type="number" min="1" max="10" step="1" value="6">
+        </div>
+        <div>
+            <label for="height-input">Select height:</label>
+            <input id="height-input" type="number" min="1" max="10" step="1" value="4">
+        </div>
+        <div>
+            <label for="map-select">Map type:</label>
+            <select id="map-select" onchange="transformContainer()">
+                <option value="2">Isometric</option>
+                <option value="1">Orthogonal</option>
+            </select>
+        </div>
+        <div>
+            <label for="text-select">Numbers Visible:</label>
+            <select id="text-select" onchange="textVisible()">
+                <option value="false" selected>Invisible</option>
+                <option value="true">Visible</option>
+            </select>
+        </div>
+        <div style="display: flexbox">
+            <button onclick="generateMap(0)"> Generate! </button>
+            <button onclick="generateMap(1)"> Randomize! </button>
+        </div>
+    </div> -->
+    <!-- <div id="stats">
+        <span>Statistics</span>
+        <div>Total Resources: <input id="totalResources" disabled class="statText" value="0"></input></div>
+        <div id="statsData"></div>
+    </div> -->
+    <div id="map-space"></div>
+    <!-- <div class="card"></div> -->
+    <div id="point"></div>
+    <!-- <script src="point.js"></script> -->
+
+    <script src="card.js"></script>
+</body>
+
+</html>
