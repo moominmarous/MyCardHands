@@ -119,17 +119,30 @@ const cardEvents = () => {
                 element.style.left = `${x}px`;
                 element.style.top = `${y}px`;
 
-                // Send the updated position to the server
-                sendCardUpdate(element.id, { x, y });
+                const hoveredElements = document.elementsFromPoint(e.clientX, e.clientY);
+                const overHandSpace = Array.from(hoveredElements).some(el => el.id === "hand-space");
+                if (overHandSpace) {
+                    console.log(`${overHandSpace}`)
+                } else {
+                    // Send the updated position to the server
+                    sendCardUpdate(element.id, { x, y });
+                }
             };
-            const onMouseUp = () => {
+            const onMouseUp = (e) => {
                 isDragging = false;
-                // document.removeEventListener("mousemove", onMouseMove);
-                // document.removeEventListener("mouseup", onMouseUp);
-                let x = element.getBoundingClientRect().left;
-                let y = element.getBoundingClientRect().top;
-                // Send the updated position to the server
-                sendCardUpdate(element.id, { x, y })
+                const hoveredElements = document.elementsFromPoint(e.clientX, e.clientY);
+                const overHandSpace = Array.from(hoveredElements).some(el => el.id === "hand-space");
+                if (overHandSpace) {
+                    console.log(`${overHandSpace}`)
+                } else {
+                    // document.removeEventListener("mousemove", onMouseMove);
+                    // document.removeEventListener("mouseup", onMouseUp);
+                    let x = element.getBoundingClientRect().left;
+                    let y = element.getBoundingClientRect().top;
+                    // Send the updated position to the server
+                    sendCardUpdate(element.id, { x, y })
+                }
+
 
             };
             document.addEventListener("mousemove", onMouseMove);
